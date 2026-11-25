@@ -354,89 +354,112 @@ function LandingPage() {
           <a href="#features">Features</a>
           <a href="#faq">FAQ</a>
         </motion.nav>
-        <section className="relative mx-auto mt-0 flex min-h-screen max-w-5xl snap-start items-center px-6 text-center">
-          <div className="w-full">
-          <motion.h1
-            initial={{ opacity: 0, y: 26 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.05 }}
-            className="landing-hero-title-v2 mx-auto max-w-4xl text-5xl font-bold leading-[1.02] tracking-[-0.02em] md:text-7xl"
-          >
-            <span className="block text-white">Get More Interviews</span>
-            <span className="landing-hero-typewriter-wrap mt-2 block">
-              <span className="landing-hero-typewriter">
-                <span className="landing-hero-type-white">with a </span>
-                <span className="landing-hero-type-green">Better</span>
-                <span className="landing-hero-type-white"> Resume.</span>
-              </span>
-            </span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 26 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.12 }}
-            className="landing-hero-subtitle-v2 mx-auto mt-6 max-w-2xl text-[15px] leading-relaxed text-stone-300 md:text-[20px] md:leading-[1.42]"
-          >
-            Optimize your resume with real-time ATS scores, skill match, and expert AI recommendations.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 26 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-9 flex flex-wrap items-center justify-center gap-3"
-          >
-            <Link
-              to="/analyze"
-              onClick={clearStoredAnalysisResult}
-              className="inline-flex items-center gap-2 rounded-xl bg-[#f5f5f4] px-8 py-3 text-base font-semibold text-[#111827] shadow-[0_12px_30px_rgba(255,255,255,0.22)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#e7e5e4] hover:shadow-[0_16px_36px_rgba(255,255,255,0.26)] md:px-10 md:py-4 md:text-lg"
+        <section className="relative mx-auto flex min-h-[94vh] w-full snap-start items-center overflow-hidden px-5 pb-10 pt-20 md:px-10 md:pb-14 md:pt-24">
+          <div className="pointer-events-none absolute inset-0 [background:radial-gradient(circle_at_50%_52%,rgba(45,212,191,0.12),transparent_24%),radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.06),transparent_32%)]" />
+          <div className="relative z-10 mx-auto w-full max-w-6xl text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55 }}
+              className="mx-auto inline-flex items-center gap-2 rounded-full border border-emerald-400/25 bg-emerald-400/[0.08] px-3.5 py-1.5 text-xs font-semibold text-emerald-200 md:text-sm"
             >
-              Analyze My Resume <span aria-hidden>→</span>
-            </Link>
-            <a
-              href="#how"
-              className="inline-flex items-center gap-2 rounded-xl border border-stone-600/90 bg-stone-900/65 px-8 py-3 text-base font-semibold text-stone-200 transition-all duration-200 hover:border-stone-400 hover:bg-stone-800/75 hover:text-white md:px-10 md:py-4 md:text-lg"
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.9)]" />
+              AI-powered resume intelligence
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.05 }}
+              className="mx-auto mt-6 max-w-5xl text-[44px] font-bold leading-[0.98] text-white md:text-[82px] md:leading-[0.96]"
             >
-              View Workflow
-            </a>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.28 }}
-            className="relative left-1/2 mt-10 w-screen -translate-x-1/2 overflow-hidden"
-          >
-            <div className="relative overflow-hidden border-y border-stone-700/70 bg-gradient-to-r from-[#0b0b0c] via-[#111112] to-[#0b0b0c] py-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),inset_0_-1px_0_rgba(255,255,255,0.06),0_12px_28px_rgba(0,0,0,0.35)]">
-              <div className="pointer-events-none absolute inset-y-0 left-0 w-28 bg-gradient-to-r from-black/55 to-transparent" />
-              <div className="pointer-events-none absolute inset-y-0 right-0 w-28 bg-gradient-to-l from-black/55 to-transparent" />
-              <motion.div
-                animate={{ x: ["0%", "-50%"] }}
-                transition={{ duration: 24, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-                className="flex w-[200%] items-center gap-16 whitespace-nowrap"
+              Turn your resume into an
+              <span className="mt-2 block text-emerald-300 md:mt-3">interview advantage.</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.12 }}
+              className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-stone-300 md:text-xl"
+            >
+              Scan ATS fit, close skill gaps, verify your claims, and build a role-specific action plan in one focused workspace.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.18 }}
+              className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row"
+            >
+              <Link
+                to="/analyze"
+                onClick={clearStoredAnalysisResult}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-white px-6 py-3.5 text-base font-bold text-stone-950 shadow-[0_14px_40px_rgba(255,255,255,0.16)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-emerald-50 sm:w-auto md:px-8 md:py-4"
               >
-                {Array.from({ length: 2 }).map((_, setIdx) => (
-                  <div key={`set-${setIdx}`} className="flex items-center gap-16 pr-16">
+                Analyze my resume <span aria-hidden>→</span>
+              </Link>
+              <a
+                href="#how"
+                className="inline-flex w-full items-center justify-center rounded-lg border border-stone-600 bg-stone-950/50 px-6 py-3.5 text-base font-semibold text-stone-200 transition-all duration-200 hover:border-stone-400 hover:bg-stone-900 sm:w-auto md:px-8 md:py-4"
+              >
+                See how it works
+              </a>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 28, scale: 0.985 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.26 }}
+              className="mx-auto mt-9 max-w-4xl overflow-hidden rounded-t-lg border border-b-0 border-stone-700/80 bg-[#111313] text-left shadow-[0_-8px_50px_rgba(16,185,129,0.09),0_30px_80px_rgba(0,0,0,0.38)] md:mt-11"
+            >
+              <div className="flex h-9 items-center justify-between border-b border-stone-800 px-3 md:px-4">
+                <div className="flex gap-1.5">
+                  <span className="h-2 w-2 rounded-full bg-stone-600" />
+                  <span className="h-2 w-2 rounded-full bg-stone-700" />
+                  <span className="h-2 w-2 rounded-full bg-emerald-500/70" />
+                </div>
+                <span className="text-[10px] font-medium text-stone-500 md:text-xs">resume-analysis.dashboard</span>
+                <span className="rounded-full bg-emerald-400/10 px-2 py-0.5 text-[9px] font-bold text-emerald-300 md:text-[10px]">LIVE</span>
+              </div>
+              <div className="grid grid-cols-[72px_1fr] md:grid-cols-[180px_1fr]">
+                <aside className="border-r border-stone-800 p-2.5 md:p-4">
+                  <div className="hidden text-[10px] font-bold uppercase tracking-[0.18em] text-stone-600 md:block">Analysis</div>
+                  {["Overview", "ATS Check", "Role Match", "Skill Gaps", "Interview"].map((item, index) => (
+                    <div key={item} className={`mt-2 truncate rounded-md px-2 py-2 text-[9px] md:text-xs ${index === 0 ? "bg-emerald-400/10 text-emerald-200" : "text-stone-500"}`}>
+                      {item}
+                    </div>
+                  ))}
+                </aside>
+                <div className="p-3 md:p-5">
+                  <div className="flex items-end justify-between">
+                    <div>
+                      <p className="text-[9px] font-semibold uppercase tracking-[0.16em] text-stone-500 md:text-xs">Application readiness</p>
+                      <p className="mt-1 text-sm font-semibold text-stone-100 md:text-lg">Backend Developer</p>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-xl font-bold text-emerald-300 md:text-3xl">82</span>
+                      <span className="text-[9px] text-stone-500 md:text-xs"> / 100</span>
+                    </div>
+                  </div>
+                  <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-stone-800">
+                    <div className="h-full w-[82%] rounded-full bg-emerald-400" />
+                  </div>
+                  <div className="mt-3 grid grid-cols-3 gap-2 md:mt-4 md:gap-3">
                     {[
-                      "ATS CHECKER",
-                      "ROLE MATCH",
-                      "MISSING SKILLS",
-                      "INTERVIEW SIM",
-                      "PROJECT PLAN",
-                      "READINESS SCORE",
-                      "APPLICATION READINESS",
-                      "INTERVIEW LOOP",
-                    ].map((label, idx) => (
-                      <div key={`${setIdx}-${label}`} className="flex items-center gap-16">
-                        <span className="text-[13px] font-bold tracking-[0.2em] text-[#d6d0c4] md:text-lg">
-                          {label}
-                        </span>
-                        {idx < 7 ? <span className="text-stone-500">◆</span> : null}
+                      ["Matched", "14 skills"],
+                      ["Missing", "5 skills"],
+                      ["ATS Fit", "Strong"],
+                    ].map(([label, value]) => (
+                      <div key={label} className="rounded-md border border-stone-800 bg-stone-900/70 px-2 py-2.5 md:px-3 md:py-3">
+                        <p className="text-[8px] text-stone-500 md:text-[10px]">{label}</p>
+                        <p className="mt-1 text-[10px] font-semibold text-stone-200 md:text-sm">{value}</p>
                       </div>
                     ))}
                   </div>
-                ))}
-              </motion.div>
-            </div>
-          </motion.div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
 
