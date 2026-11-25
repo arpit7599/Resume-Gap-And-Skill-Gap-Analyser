@@ -1,8 +1,41 @@
-# ResumePilot - AI Resume Analyzer
+<!-- Project Badges -->
 
-ResumePilot is a full-stack resume analysis platform that helps job seekers improve their resumes before applying. It combines PDF parsing, AI-assisted skill extraction, ATS-style scoring, missing-skill detection, role matching, interview preparation, and a practical roadmap builder in one workspace.
+# ResumePilot - AI Resume Intelligence Platform
 
-The product is designed around a simple workflow: upload a PDF resume, choose a target domain, review the score and skill gaps, then use the generated recommendations to make the resume more recruiter-ready and interview-ready.
+![React](https://img.shields.io/badge/React-19-087ea4?logo=react&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-7-646cff?logo=vite&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-20-339933?logo=nodedotjs&logoColor=white)
+![Express](https://img.shields.io/badge/Express-5-000000?logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-47a248?logo=mongodb&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-GPT--Powered-412991)
+![License](https://img.shieldsields.io/badge/License-MIT-blue)
+
+ResumePilot is an end-to-end, full-stack career-readiness platform that helps candidates transform a resume into an application strategy. It combines PDF parsing, AI-powered information extraction, role-based skill matching, ATS-style scoring, claim verification, interview simulation, and personalized project roadmaps.
+
+Unlike a standalone resume checker, ResumePilot follows the complete candidate workflow:
+
+```text
+Resume Upload -> Text Extraction -> Skill Analysis -> Gap Detection
+     -> Application Readiness -> Claim Verification -> Interview Prep
+     -> Project Roadmap -> Resume Improvement
+```
+
+---
+
+## Table of Contents
+
+- [Product Highlights](#core-features)
+- [System Architecture](#system-architecture)
+- [Frontend Architecture](#frontend-explanation)
+- [Backend Architecture](#backend-explanation)
+- [API Documentation](#main-api-routes)
+- [Local Development](#local-setup)
+- [Environment Variables](#environment-variables)
+- [Testing](#testing-and-quality)
+- [Deployment](#deployment)
+- [Screenshots](#product-screenshots)
+
+> **Demo mode:** ResumePilot runs with deterministic fallback analysis when OpenAI or MongoDB is not configured. This makes core skill matching and scoring available even in a local or restricted environment.
 
 ## Product Screenshots
 
@@ -337,13 +370,92 @@ Start the frontend:
 npm run dev
 ```
 
-## Testing and Build
+## Environment Variables
+
+| Variable | Scope | Required | Description |
+| --- | --- | --- | --- |
+| `PORT` | Backend | No | Express server port. Defaults to `5000`. |
+| `MONGO_URI` | Backend | Recommended | MongoDB connection string for resume and assessment persistence. |
+| `OPENAI_API_KEY` | Backend | Optional | Enables AI-powered resume analysis and project-plan generation. |
+| `VITE_API_BASE_URL` | Frontend | Optional | Backend API URL, ending in `/api`. Defaults to `/api`. |
+
+Example production values:
+
+```env
+# Backend
+PORT=5000
+MONGO_URI=mongodb+srv://<user>:<password>@<cluster>/<database>
+OPENAI_API_KEY=sk-your-key
+
+# Frontend
+VITE_API_BASE_URL=https://your-api.onrender.com/api
+```
+
+Never commit `.env` files or API keys to source control.
+
+## API Examples
+
+### Analyze a resume
+
+```bash
+curl -X POST "http://localhost:5000/api/analyze-resume" \
+  -F "resume=@/path/to/resume.pdf" \
+  -F "requiredSkills=JavaScript,React,Node.js,MongoDB"
+```
+
+Example response shape:
+
+```json
+{
+  "success": true,
+  "resumeScore": 78,
+  "extractedSkills": ["JavaScript", "React", "Node.js"],
+  "matchedSkills": ["JavaScript", "React", "Node.js"],
+  "missingSkills": ["MongoDB"],
+  "suggestions": ["Add quantified MongoDB project outcomes."],
+  "analysisTime": 1.42
+}
+```
+
+### Generate a project plan
+
+```bash
+curl -X POST "http://localhost:5000/api/generate-project-plan" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "role": "Backend Developer",
+    "missingSkills": ["MongoDB", "System Design"],
+    "extractedSkills": ["Node.js", "Express"]
+  }'
+```
+
+## Testing and Quality
+
+Frontend tests use Node's built-in test runner:
 
 ```bash
 cd frontend
 npm test
+npm run lint
 npm run build
 ```
+
+Backend validation:
+
+```bash
+cd backend
+npm start
+curl http://localhost:5000/health
+```
+
+For a complete verification pass:
+
+1. Start both services.
+2. Upload a valid PDF resume from the dashboard.
+3. Confirm the role skills and extracted skills appear in the response.
+4. Run claim verification and interview simulation workflows.
+5. Verify `MONGO_URI` persistence or the fallback mode behavior.
+6. Run a production frontend build before deployment.
 
 ## Deployment
 
