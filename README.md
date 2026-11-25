@@ -8,7 +8,7 @@
 ![Express](https://img.shields.io/badge/Express-5-000000?logo=express&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-47a248?logo=mongodb&logoColor=white)
 ![OpenAI](https://img.shields.io/badge/OpenAI-GPT--Powered-412991)
-![License](https://img.shieldsields.io/badge/License-MIT-blue)
+
 
 ResumePilot is an end-to-end, full-stack career-readiness platform that helps candidates transform a resume into an application strategy. It combines PDF parsing, AI-powered information extraction, role-based skill matching, ATS-style scoring, claim verification, interview simulation, and personalized project roadmaps.
 
