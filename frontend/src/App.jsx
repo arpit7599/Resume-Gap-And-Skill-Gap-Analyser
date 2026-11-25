@@ -285,6 +285,7 @@ function LandingPage() {
   const navigate = useNavigate();
   const howSectionRef = useRef(null);
   const [showStickyCta, setShowStickyCta] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
   const stickyStateRef = useRef(false);
   const { scrollYProgress } = useScroll({
     target: howSectionRef,
@@ -332,28 +333,83 @@ function LandingPage() {
         </Link>
       ) : null}
       <main className="relative z-10 w-full pb-0 pt-8">
-        <motion.div
+        <motion.header
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
-          className="absolute left-6 top-6 z-30 flex items-center gap-2"
+          className="absolute left-1/2 top-4 z-40 w-[calc(100%-2rem)] max-w-6xl -translate-x-1/2"
         >
-          <span className="inline-flex h-6 w-5 items-center justify-center rounded-sm border border-stone-400/80 bg-stone-100 text-[10px] font-bold text-stone-900 shadow-sm">
-            ▤
-          </span>
-          <span className="block text-lg font-semibold tracking-tight text-white md:text-xl">ResumePilot</span>
-        </motion.div>
-        <motion.nav
-          initial={{ opacity: 0, y: -18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="premium-nav hidden items-center justify-center gap-16 text-base font-semibold text-stone-100 md:flex md:text-lg"
-        >
-          <a href="#how">How It Works</a>
-          <a href="#what-you-get">What You Get</a>
-          <a href="#features">Features</a>
-          <a href="#faq">FAQ</a>
-        </motion.nav>
+          <nav className="flex h-14 items-center justify-between rounded-lg border border-white/10 bg-[#111111]/85 px-3 shadow-[0_12px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl md:h-16 md:px-4">
+            <Link to="/" className="flex items-center gap-2.5" aria-label="ResumePilot home">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-emerald-300/25 bg-emerald-400/10 text-sm font-bold text-emerald-300">
+                RP
+              </span>
+              <span className="text-base font-bold tracking-tight text-white md:text-lg">ResumePilot</span>
+            </Link>
+
+            <div className="premium-nav hidden items-center gap-7 text-sm font-semibold text-stone-300 md:flex">
+              <a href="#how">How it works</a>
+              <a href="#what-you-get">What you get</a>
+              <a href="#features">Features</a>
+              <a href="#faq">FAQ</a>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <Link
+                to="/analyze"
+                onClick={clearStoredAnalysisResult}
+                className="hidden rounded-md bg-white px-4 py-2.5 text-sm font-bold text-stone-950 transition-colors hover:bg-emerald-50 sm:inline-flex"
+              >
+                Analyze resume
+              </Link>
+              <button
+                type="button"
+                aria-expanded={showMobileMenu}
+                aria-label={showMobileMenu ? "Close navigation menu" : "Open navigation menu"}
+                onClick={() => setShowMobileMenu((current) => !current)}
+                className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-md border border-white/10 text-white md:hidden"
+              >
+                <span className={`h-0.5 w-4 bg-current transition-transform ${showMobileMenu ? "translate-y-1 rotate-45" : ""}`} />
+                <span className={`h-0.5 w-4 bg-current transition-opacity ${showMobileMenu ? "opacity-0" : ""}`} />
+                <span className={`h-0.5 w-4 bg-current transition-transform ${showMobileMenu ? "-translate-y-1 -rotate-45" : ""}`} />
+              </button>
+            </div>
+          </nav>
+
+          {showMobileMenu ? (
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-2 rounded-lg border border-white/10 bg-[#111111]/95 p-2 shadow-2xl backdrop-blur-xl md:hidden"
+            >
+              {[
+                ["How it works", "#how"],
+                ["What you get", "#what-you-get"],
+                ["Features", "#features"],
+                ["FAQ", "#faq"],
+              ].map(([label, href]) => (
+                <a
+                  key={label}
+                  href={href}
+                  onClick={() => setShowMobileMenu(false)}
+                  className="block rounded-md px-3 py-3 text-sm font-semibold text-stone-200 hover:bg-white/5 hover:text-white"
+                >
+                  {label}
+                </a>
+              ))}
+              <Link
+                to="/analyze"
+                onClick={() => {
+                  setShowMobileMenu(false);
+                  clearStoredAnalysisResult();
+                }}
+                className="mt-1 flex items-center justify-center rounded-md bg-white px-4 py-3 text-sm font-bold text-stone-950"
+              >
+                Analyze resume
+              </Link>
+            </motion.div>
+          ) : null}
+        </motion.header>
         <section className="relative mx-auto flex min-h-[94vh] w-full snap-start items-center overflow-hidden px-5 pb-10 pt-20 md:px-10 md:pb-14 md:pt-24">
           <div className="pointer-events-none absolute inset-0 [background:radial-gradient(circle_at_50%_52%,rgba(45,212,191,0.12),transparent_24%),radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.06),transparent_32%)]" />
           <div className="relative z-10 mx-auto w-full max-w-6xl text-center">
